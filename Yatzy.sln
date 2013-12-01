@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatzy", "Yatzy\Yatzy.csproj", "{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Debug|iPhone.Build.0 = Debug|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Release|iPhone.ActiveCfg = Release|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Release|iPhone.Build.0 = Release|iPhone
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{7810D384-123B-4AD8-BC9B-35CC0AD9A8C8}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Yatzy\Yatzy.csproj
+	EndGlobalSection
+EndGlobal
