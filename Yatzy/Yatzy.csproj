@@ -105,6 +105,9 @@
     <Compile Include="YatzyViewController.designer.cs">
       <DependentUpon>YatzyViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
+    <Compile Include="ScoreBoard.cs" />
+    <Compile Include="Die.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
