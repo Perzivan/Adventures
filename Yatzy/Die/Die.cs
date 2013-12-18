@@ -2,13 +2,25 @@ using System;
 
 namespace Yatzy
 {
-	public class Die
+	public class Die : IDie
 	{
-		public int MaxNumber { get; private set;}
-		public int MinNumber { get; private set;}
-		public int LastRolledNumber { get; private set;}
+		private int MaxNumber { get; set;}
+		private int MinNumber { get; set;}
+		private int LastRolledNumber { get; set;}
 
-		public Die (int maxNumber, int minNumber)
+		public int GetMaxNumber() {
+			return MaxNumber;
+		}
+
+		public int GetMinNumber() { 
+			return MinNumber;
+		}
+
+		public int GetLastRolledNumber() {
+			return LastRolledNumber;
+		}
+
+		public Die (int minNumber, int maxNumber)
 		{
 			if (maxNumber < 1 || minNumber < 1) {
 				throw new ArgumentException ("The maxValue or the minValue is to low."); 

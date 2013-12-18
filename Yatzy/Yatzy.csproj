@@ -107,10 +107,18 @@
     </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="ScoreBoard.cs" />
-    <Compile Include="Die.cs" />
+    <Compile Include="Die\IDie.cs" />
+    <Compile Include="Die\Die.cs" />
+    <Compile Include="Tests\FakeT6Die.cs" />
+    <Compile Include="Tests\TestScores.cs" />
+    <Compile Include="Tests\DieFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Die\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
 </Project>
