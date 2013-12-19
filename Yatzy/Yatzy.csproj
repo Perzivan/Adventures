@@ -93,6 +93,25 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -107,18 +126,21 @@
     </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="ScoreBoard.cs" />
-    <Compile Include="Die\IDie.cs" />
-    <Compile Include="Die\Die.cs" />
     <Compile Include="Tests\FakeT6Die.cs" />
     <Compile Include="Tests\TestScores.cs" />
     <Compile Include="Tests\DieFactory.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Dice\DieImpl.cs" />
+    <Compile Include="Dice\DieView.cs" />
+    <Compile Include="Dice\Die.cs" />
+    <Compile Include="CheckScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Die\" />
     <Folder Include="Tests\" />
+    <Folder Include="Dice\" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace Yatzy
 		public string Name { get; private set;}
 		public List<int> Scores { get; private set;}
 
-		public Player (string Name, int numberOfScores)
+		public Player (string name, int numberOfScores)
 		{
 			Scores = new List<int> (numberOfScores);
 

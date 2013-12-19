@@ -2,7 +2,7 @@ using System;
 
 namespace Yatzy
 {
-	public class FakeT6Die : IDie
+	public class FakeT6Die : Die
 	{
 		private int LastRolledNumber { get; set;}
 
@@ -23,7 +23,7 @@ namespace Yatzy
 			return LastRolledNumber;
 		}
 
-		public int roll() {
+		public int Roll() {
 			return LastRolledNumber;
 		}
 
