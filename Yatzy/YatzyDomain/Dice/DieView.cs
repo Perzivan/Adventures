@@ -6,31 +6,45 @@ namespace Yatzy
 {
 	public class DieView : CALayer {
 
-		public bool Enabled  { get;private set;}
-
-		public void ToggleEnabled() {
-			Enabled = !Enabled;
-		} 
+		public bool Enabled  {get;private set;}
+		private const string FileEnding = ".png";
 
 		public DieView(RectangleF rect) {
 			Enabled = true;
-			Bounds = new RectangleF (rect.Location.X,rect.Location.Y,50,50);
 			Position = rect.Location;
+			Bounds = new RectangleF (rect.Location.X,rect.Location.Y,50,50);
 			ContentsGravity = CALayer.GravityResizeAspectFill;
 			Roll ();
 		}
 
-		public void MarkAsSelected(DieView die) {
+		public void ToggleSelect() {
+			if (Enabled) {
+				MarkAsSelected ();
+			} else {
+				Unselect ();
+			}
+		}
+
+		private void MarkAsSelected() {
 			BorderColor = UIColor.Green.CGColor;
 			BorderWidth = 2;
+			Enabled = false;
+		}
+
+		private void Unselect() {
+			BorderWidth = 0;
+			Enabled = true;
 		}
 
 		public void Roll() {
 			if (!Enabled) {
 				return;
 			}
-			DieImpl die = new DieImpl (1, 6);
-			Contents = UIImage.FromBundle (die.Roll () + ".png").CGImage;
+
+			const int lowRoll = 1;
+			const int highRoll = 6;
+			DieImpl die = new DieImpl (lowRoll, highRoll);
+			Contents = UIImage.FromBundle (die.Roll () + FileEnding).CGImage;
 		}
 	}
 }

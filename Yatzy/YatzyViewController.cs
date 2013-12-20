@@ -30,15 +30,9 @@ namespace Yatzy
 			if (touch != null) {
 				PointF Location = touch.LocationInView(View);
 
-				for(int i = Dice.Count-1; i >= 0; i--) {
-					if (Dice[i].Frame.Contains (Location)) {
-						if (Dice [i].Enabled) {
-							Dice [i].MarkAsSelected (Dice [i]);
-							Dice [i].ToggleEnabled ();
-						} else {
-							Dice [i].BorderWidth = 0;
-							Dice [i].ToggleEnabled ();
-						}
+				foreach(DieView die in Dice) {
+					if (die.Frame.Contains (Location)) {
+						die.ToggleSelect ();
 					}
 				}
 			}
