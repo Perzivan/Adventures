@@ -9,11 +9,13 @@ namespace Yatzy
 		public string Name { get; private set;}
 		public List<int> Scores { get; private set;}
 
-		public Player (string name, int numberOfScores)
-		{
-			Scores = new List<int> (numberOfScores);
+		private const int NumberOfScores = 16; 
 
-			for(int i = 0; i < numberOfScores; i++) { 
+		public Player (string name)
+		{
+			Scores = new List<int> (NumberOfScores);
+
+			for(int i = 0; i < NumberOfScores; i++) { 
 				Scores.Add (-1);
 			}
 		

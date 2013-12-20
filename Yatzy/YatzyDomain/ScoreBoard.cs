@@ -7,15 +7,14 @@ namespace Yatzy
 	public class ScoreBoard
 	{
 		public List<Player> Players { get; private set;}
-		private const int NumberOfScores = 16; 
-
+	
 		public ScoreBoard (List<string> playerNames)
 		{
 			int numberOfPlayers = playerNames.Count;
 			Players = new List<Player> (numberOfPlayers);
 
 			for (int i = 0; i < numberOfPlayers; i++) {
-				Players.Add (new Player (playerNames [i], NumberOfScores));
+				Players.Add (new Player (playerNames [i]));
 			}
 		}
 

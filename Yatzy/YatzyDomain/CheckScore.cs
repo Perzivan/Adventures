@@ -118,12 +118,12 @@ namespace Yatzy
 
 		}
 
-		private void SortDies(List<Die> dies) {
-			dies.Sort((die1, die2) => die1.GetLastRolledNumber().CompareTo(die2.GetLastRolledNumber()));
-		}
-
 		private bool IsFullHouse(int pair, int threeOfAKind) {
 			return pair != 0 && threeOfAKind != 0;
+		}
+
+		private void SortDies(List<Die> dies) {
+			dies.Sort((die1, die2) => die1.GetLastRolledNumber().CompareTo(die2.GetLastRolledNumber()));
 		}
 
 		private int SumPair(List<Die> dies,int wantedNumber) {
