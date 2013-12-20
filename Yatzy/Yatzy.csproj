@@ -92,7 +92,6 @@
     <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
@@ -124,23 +123,22 @@
     <Compile Include="YatzyViewController.designer.cs">
       <DependentUpon>YatzyViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Player.cs" />
-    <Compile Include="ScoreBoard.cs" />
-    <Compile Include="Tests\FakeT6Die.cs" />
-    <Compile Include="Tests\TestScores.cs" />
-    <Compile Include="Tests\DieFactory.cs" />
-    <Compile Include="Common.cs" />
-    <Compile Include="Dice\DieImpl.cs" />
-    <Compile Include="Dice\DieView.cs" />
-    <Compile Include="Dice\Die.cs" />
-    <Compile Include="CheckScore.cs" />
+    <Compile Include="YatzyDomain\Dice\Die.cs" />
+    <Compile Include="YatzyDomain\Dice\DieImpl.cs" />
+    <Compile Include="YatzyDomain\Dice\DieView.cs" />
+    <Compile Include="YatzyDomain\Tests\DieFactory.cs" />
+    <Compile Include="YatzyDomain\Tests\FakeT6Die.cs" />
+    <Compile Include="YatzyDomain\Tests\TestScores.cs" />
+    <Compile Include="YatzyDomain\Player.cs" />
+    <Compile Include="YatzyDomain\ScoreBoard.cs" />
+    <Compile Include="YatzyDomain\CheckScore.cs" />
+    <Compile Include="YatzyDomain\Common\Common.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Tests\" />
-    <Folder Include="Dice\" />
+    <Folder Include="YatzyDomain\" />
   </ItemGroup>
 </Project>
