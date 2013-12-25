@@ -16,16 +16,8 @@ namespace Yatzy
 		private int YatzyTurn { get; set;}
 		private const int MaxTurns = 3;
 
-
 		public YatzyViewController () : base ("YatzyViewController", null)
 		{
-		}
-
-		public override void DidReceiveMemoryWarning ()
-		{
-			// Releases the view if it doesn't have a superview.
-			base.DidReceiveMemoryWarning ();	
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		public override void TouchesEnded (NSSet touches, UIEvent evt)

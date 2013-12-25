@@ -66,8 +66,11 @@ namespace Yatzy
 			const int bonus = 50;
 			int bonusIndex = Convert.ToInt32 (Common.ScoreType.Bonus);
 			int playerIndex = GetIndexForPlayer (playerName);
-			Players [playerIndex].Scores [bonusIndex] = bonus;
-			AddScoreToTotal (playerName, bonus);
+			List<int> scores = Players [playerIndex].Scores;
+			if (scores [bonusIndex] == 0) {
+				scores [bonusIndex] = bonus;
+				AddScoreToTotal (playerName, bonus);
+			}
 		}
 
 		public bool HasRoundsLeft(string playerName) {
