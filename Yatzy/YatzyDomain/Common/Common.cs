@@ -9,16 +9,20 @@ namespace Yatzy
 			Twos = 1,
 			Threes = 2,
 			Fours = 3,
-			Five = 4,
-			Six = 5,
-			Pair = 6,
-			TwoPair = 7,
-			ThreeOfAKind = 8,
-			FourOfAKind = 9,
-			SmallStraight = 10,
-			BigStraight = 11,
-			FullHouse = 12,
-			Chance = 13
+			Fives = 4,
+			Sixes = 5,
+			Sum = 6,
+			Bonus = 7,
+			One_Pair = 8,
+			Two_Pairs = 9,
+			Three_Of_A_Kind = 10,
+			Four_Of_A_Kind = 11,
+			Small_Straight = 12,
+			Big_Straight = 13,
+			Full_House = 14,
+			Chance = 15,
+			Yatzy = 16,
+			Total_Score = 17
 		}
 	}
 }

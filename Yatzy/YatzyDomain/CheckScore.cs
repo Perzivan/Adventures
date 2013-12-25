@@ -7,7 +7,7 @@ namespace Yatzy
 	public class CheckScore
 	{
 		private int GetMaxNumber(List<Die> dies) {
-			return dies [0].GetMaxNumber();
+			return dies [0].GetMaxNumber()-1;
 		}
 
 		public int SumWantedNumber (List<Die> dies, int wantedNumber)
@@ -26,8 +26,7 @@ namespace Yatzy
 			if (SumWantedNumber (dies, wantedNumber,dies.Count) != sumOfYatzy) {
 				return 0;
 			}
-
-			return sumOfYatzy;
+			return 50;
 		}
 
 		public int SumWantedNumber(List<Die> dies,int wantedNumber, int frequency) {
@@ -47,19 +46,17 @@ namespace Yatzy
 
 		public int SumThreeOfAKind (List<Die> dies)
 		{
-			for (int i = GetMaxNumber (dies); i <= 0; i--) {
-				var result = dies.FindAll (die => die.GetLastRolledNumber () == i);
+			return SumSequence (dies, 3);
+		}
 
-				if (result.Count >= 3) {
-					return i * 3;
-				} 
-			}
-			return 0;
+		public int SumFourOfAKind (List<Die> dies)
+		{
+			return SumSequence (dies, 4);
 		}
 
 		private int SumSequence(List<Die> dies,int  frequency) {
 			int result = 0;
-			for (int i = GetMaxNumber(dies); i <= 0 && result == 0; i--) {
+			for (int i = GetMaxNumber(dies); i >= 0 && result == 0; i--) {
 				result = SumWantedNumber (dies,i,frequency);
 			}
 			return result;
@@ -70,7 +67,7 @@ namespace Yatzy
 			int sum = 0;
 			int pairCount = 0;
 
-			for (int i = GetMaxNumber (dies); i <= 0; i--) {
+			for (int i = GetMaxNumber (dies); i >= 0; i--) {
 
 				var result = dies.FindAll (die => die.GetLastRolledNumber () == i);
 
@@ -140,6 +137,40 @@ namespace Yatzy
 			return dies.Sum (Die=> Die.GetLastRolledNumber());
 		}
 
+		//Bleh.. Refactor this! 
+		public int SumScoreForType(List<Die> dies,Common.ScoreType scoreType) {
+
+			CheckScore Check = new Yatzy.CheckScore ();
+
+			switch (scoreType) {
+			case Common.ScoreType.Ones:
+			case Common.ScoreType.Twos:
+			case Common.ScoreType.Threes:
+			case Common.ScoreType.Fours:
+			case Common.ScoreType.Fives:
+			case Common.ScoreType.Sixes:
+				return Check.SumWantedNumber (dies,(int) scoreType + 1);
+			case Common.ScoreType.One_Pair: 
+				return Check.SumPair (dies);
+			case Common.ScoreType.Two_Pairs:
+				return Check.SumTwoPair (dies);
+			case Common.ScoreType.Three_Of_A_Kind:
+				return Check.SumThreeOfAKind (dies);
+			case Common.ScoreType.Four_Of_A_Kind:
+				return Check.SumFourOfAKind (dies);
+			case Common.ScoreType.Small_Straight:
+				return Check.SumStraights (dies, 1);
+			case Common.ScoreType.Big_Straight:
+				return Check.SumStraights (dies, 2);
+			case Common.ScoreType.Full_House:
+				return Check.SumFullHouse (dies);
+			case Common.ScoreType.Chance:
+				return Check.SumChance (dies);
+			case Common.ScoreType.Yatzy:
+				return Check.SumYatzy (dies);
+			}
+			return 0;
+		}
 	}
 }
 

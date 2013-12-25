@@ -90,6 +90,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="System.Data" />
+    <Reference Include="ActionPack.iOS">
+      <HintPath>..\Components\actionpack-1.4-trial\lib\ios\ActionPack.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\1.png">
@@ -130,9 +134,10 @@
     <Compile Include="YatzyDomain\Tests\FakeT6Die.cs" />
     <Compile Include="YatzyDomain\Tests\TestScores.cs" />
     <Compile Include="YatzyDomain\Player.cs" />
-    <Compile Include="YatzyDomain\ScoreBoard.cs" />
     <Compile Include="YatzyDomain\CheckScore.cs" />
     <Compile Include="YatzyDomain\Common\Common.cs" />
+    <Compile Include="YatzyDomain\Board\ScoreBoard.cs" />
+    <Compile Include="YatzyDomain\Board\ActionBoardView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
@@ -140,5 +145,12 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="YatzyDomain\" />
+    <Folder Include="YatzyDomain\Board\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="actionpack-trial">
+      <Version>1.4</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

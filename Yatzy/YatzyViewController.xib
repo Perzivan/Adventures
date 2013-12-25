@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YatzyViewController">
             <connections>
-                <outlet property="Roll" destination="mfm-0m-dTn" id="8Y6-is-HrB"/>
+                <outlet property="PresentRollNumber" destination="K88-xn-9QJ" id="0s8-NC-DJG"/>
+                <outlet property="RollButton" destination="K33-7U-lhN" id="L1U-si-sv9"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
         </placeholder>
@@ -15,15 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mfm-0m-dTn">
-                    <rect key="frame" x="105" y="320" width="103" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="K33-7U-lhN">
+                    <rect key="frame" x="15" y="357" width="272" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Test Your luck!">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.49309984087191622" green="0.669921875" blue="0.65787130781558512" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="titleShadowOffset" width="1" height="1"/>
+                    <state key="normal" title="Press to roll!">
+                        <color key="titleColor" red="1" green="0.98513969027617487" blue="0.98891423569947445" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" red="0.62603635204081631" green="0.61673325795111611" blue="0.61909626059853096" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K88-xn-9QJ">
+                    <rect key="frame" x="295" y="361" width="25" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93382727581521741" green="0.87642431513381325" blue="0.63228249965736316" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="0.70027201860599253" green="0.79591836734693877" blue="0.6795884128973716" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
     </objects>

@@ -13,13 +13,29 @@ namespace Yatzy
 	partial class YatzyViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UILabel PresentRollNumber { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton Roll { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton RollButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (PresentRollNumber != null) {
+				PresentRollNumber.Dispose ();
+				PresentRollNumber = null;
+			}
+
 			if (Roll != null) {
 				Roll.Dispose ();
 				Roll = null;
+			}
+
+			if (RollButton != null) {
+				RollButton.Dispose ();
+				RollButton = null;
 			}
 		}
 	}
