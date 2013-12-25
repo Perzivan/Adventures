@@ -28,18 +28,6 @@ namespace Yatzy
 			// Release any cached data, images, etc that aren't in use.
 		}
 
-		public override void MotionEnded (UIEventSubtype motion, UIEvent evt)
-		{
-			if (motion == UIEventSubtype.MotionShake)
-			{
-				DiceViewList.ForEach (die => {
-					PrepareRoll();
-					DiceViewList.ForEach (DoRoll);
-					SetPresentRollNumber();
-				});
-			}
-		}
-
 		public override void TouchesEnded (NSSet touches, UIEvent evt)
 		{
 			base.TouchesEnded (touches, evt);
@@ -74,25 +62,33 @@ namespace Yatzy
 			View.AddSubview (YatzyTable.ComponentTable.TableView);
 
 			RollButton.TouchUpInside += (sender, e) => {
-				PrepareRoll();
-				DiceViewList.ForEach (DoRoll);
-				SetPresentRollNumber();
+				string playerName = YatzyTable.Board.CurrentPlayer.Name;
 
+				if(YatzyTable.Board.HasRoundsLeft(playerName)) {
+					PrepareRoll();
+					DiceViewList.ForEach (DoRoll);
+					SetPresentRollNumber();
+				}
 			};
 
 			YatzyTable.ComponentTable.ItemsSelected += delegate(UIActionTableItem item)
 			{
-				CheckScore check = new CheckScore ();
 				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), AddUnderScores(item.text));
 
+				if(!IsSelectable(type)) 
+				{
+					return;
+				}
+
+				CheckScore check = new CheckScore ();
 				List<Die> diceList = new List<Die> ();
 				DiceViewList.ForEach (dieView => diceList.Add (dieView.Die));
 				int sum = check.SumScoreForType (diceList,type);
+
 				string playerName = YatzyTable.Board.CurrentPlayer.Name;
 
 				if(YatzyTable.Board.IsUnpopulated(playerName,type)) {
 					PopulateValue(playerName,type,sum);
-
 					YatzyTable.Board.SetSum(playerName);
 	
 					if(YatzyTable.Board.HasBonus(playerName)) {
@@ -105,6 +101,10 @@ namespace Yatzy
 
 			ResetForNextTurn ();
 			SetPresentRollNumber ();
+		}
+
+		private bool IsSelectable(Common.ScoreType type) {
+			return YatzyTurn > 0 && type != Common.ScoreType.Sum && type != Common.ScoreType.Bonus;	
 		}
 
 		private void PopulateValue(string playerName, Common.ScoreType type, int sum) {

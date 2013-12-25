@@ -14,10 +14,11 @@ namespace Yatzy
 			Name = name;
 			Scores = new List<int> (numberOfScores);
 
-			for(int i = 0; i < numberOfScores; i++) { 
-				Scores.Add (-1);
+			for(int i = 0; i < numberOfScores; i++) {
+					Scores.Add (-1);
 			}
-		
+
+			Scores [(int)Common.ScoreType.Bonus] = 0;
 		}
 	}
 }

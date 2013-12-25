@@ -70,6 +70,12 @@ namespace Yatzy
 			AddScoreToTotal (playerName, bonus);
 		}
 
+		public bool HasRoundsLeft(string playerName) {
+			int playerIndex = GetIndexForPlayer (playerName);
+			const int unpopulated = -1;
+			return Players [playerIndex].Scores.FindAll (number=> number == unpopulated).Count > 0;
+		}
+
 		public int GetSum(string playerName) {
 			int playerIndex = GetIndexForPlayer (playerName);
 			return Players [playerIndex].Scores [(int)Common.ScoreType.Sum];
