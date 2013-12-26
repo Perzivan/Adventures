@@ -67,7 +67,7 @@ namespace Yatzy
 			{
 				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), AddUnderScores(item.text));
 
-				if(!IsSelectable(type)) 
+				if(!IsSelectable()) 
 				{
 					return;
 				}
@@ -95,8 +95,8 @@ namespace Yatzy
 			SetPresentRollNumber ();
 		}
 
-		private bool IsSelectable(Common.ScoreType type) {
-			return YatzyTurn > 0 && type != Common.ScoreType.Sum && type != Common.ScoreType.Bonus;	
+		private bool IsSelectable() {
+			return YatzyTurn > 0;	
 		}
 
 		private void PopulateValue(string playerName, Common.ScoreType type, int sum) {
