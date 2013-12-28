@@ -116,17 +116,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\Icon.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\first.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\first%402x.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\second.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\second%402x.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
@@ -138,10 +131,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="YatzyViewController.cs" />
-    <Compile Include="YatzyViewController.designer.cs">
-      <DependentUpon>YatzyViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="YatzyDomain\Dice\Die.cs" />
     <Compile Include="YatzyDomain\Dice\DieImpl.cs" />
     <Compile Include="YatzyDomain\Dice\DieView.cs" />
@@ -153,21 +142,25 @@
     <Compile Include="YatzyDomain\Common\Common.cs" />
     <Compile Include="YatzyDomain\Board\ScoreBoard.cs" />
     <Compile Include="YatzyDomain\Board\ActionBoardView.cs" />
-    <Compile Include="StartViewController.cs" />
-    <Compile Include="StartViewController.designer.cs">
+    <Compile Include="ViewControllers\CustomTextView.cs" />
+    <Compile Include="ViewControllers\StartViewController.cs" />
+    <Compile Include="ViewControllers\StartViewController.designer.cs">
       <DependentUpon>StartViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CustomTextView.cs" />
+    <Compile Include="ViewControllers\YatzyViewController.cs" />
+    <Compile Include="ViewControllers\YatzyViewController.designer.cs">
+      <DependentUpon>YatzyViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="YatzyViewController.xib" />
-    <InterfaceDefinition Include="StartViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\StartViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\YatzyViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="YatzyDomain\" />
     <Folder Include="YatzyDomain\Board\" />
-    <Folder Include="Views\" />
+    <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="actionpack-trial">
