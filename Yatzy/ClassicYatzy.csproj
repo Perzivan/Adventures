@@ -122,6 +122,9 @@
     <BundleResource Include="Resources\first%402x.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\FirstScreenBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -133,7 +136,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="YatzyDomain\Dice\Die.cs" />
     <Compile Include="YatzyDomain\Dice\DieImpl.cs" />
-    <Compile Include="YatzyDomain\Dice\DieView.cs" />
     <Compile Include="YatzyDomain\Tests\DieFactory.cs" />
     <Compile Include="YatzyDomain\Tests\FakeT6Die.cs" />
     <Compile Include="YatzyDomain\Tests\TestScores.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="ViewControllers\YatzyViewController.designer.cs">
       <DependentUpon>YatzyViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\DieView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="ViewControllers\StartViewController.xib" />

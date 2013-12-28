@@ -17,6 +17,12 @@ namespace Yatzy
 		{
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			UIImage image = UIImage.FromBundle ("FirstScreenBackground.png");
+			image = image.Scale(new SizeF (302, 305));
+
+			View.BackgroundColor = UIColor.FromPatternImage (image);
+
 			AddGameControls ();
 		}
 
