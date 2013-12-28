@@ -1,4 +1,6 @@
 using System;
+using MonoTouch.UIKit;
+using MonoTouch.CoreGraphics;
 
 namespace Yatzy
 {
@@ -23,6 +25,27 @@ namespace Yatzy
 			Chance = 15,
 			Yatzy = 16,
 			Total_Score = 17
+		}
+
+		public static string AddUnderScores(string text) {
+			return text.Replace (" ", "_");
+		}
+
+		public static string RemoveUnderScores(string text) {
+			return text.Replace ("_", " ");
+		}
+
+		public static UIColor GetYatzyButtonUIColor() {
+			const float red = 0.4930998f;
+			const float green = 0.6699219f;
+			const float blue = 0.6578713f;
+			const float alpha = 1;
+			CGColor color = new CGColor(red,green,blue,alpha);
+			return UIColor.FromCGColor(color);
+		}
+
+		public static UIColor GetYatzyBackgroundUIColor() {
+			return UIColor.FromRGBA (238, 223, 161, 255); 
 		}
 	}
 }

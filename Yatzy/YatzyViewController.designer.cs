@@ -16,6 +16,9 @@ namespace Yatzy
 		MonoTouch.UIKit.UILabel PresentRollNumber { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton ReplacementButton { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton Roll { get; set; }
 
 		[Outlet]
@@ -26,6 +29,11 @@ namespace Yatzy
 			if (PresentRollNumber != null) {
 				PresentRollNumber.Dispose ();
 				PresentRollNumber = null;
+			}
+
+			if (ReplacementButton != null) {
+				ReplacementButton.Dispose ();
+				ReplacementButton = null;
 			}
 
 			if (Roll != null) {

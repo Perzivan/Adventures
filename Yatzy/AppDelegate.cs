@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Appracatappra.ActionComponents.ActionAlert;
+using System.Drawing;
+using MonoTouch.Dialog;
+using MonoTouch.CoreGraphics;
 
 namespace Yatzy
 {
@@ -14,7 +18,7 @@ namespace Yatzy
 	{
 		// class-level declarations
 		UIWindow window;
-		YatzyViewController viewController;
+		public UITabBarController TabBarController { get; set;}
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
 		// method you should instantiate the window, load the UI into it and then make the window
@@ -24,14 +28,24 @@ namespace Yatzy
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			
-			viewController = new YatzyViewController ();
-			window.RootViewController = viewController;
+			TabBarController = new UITabBarController ();
+			StartViewController startView = new StartViewController ();
+
+			TabBarController.ViewControllers = new UIViewController [] {
+				startView
+			};
+
+			window.RootViewController = TabBarController;
+			window.RootViewController.View.BackgroundColor = UIColor.White;
+
+			// make the window visible
 			window.MakeKeyAndVisible ();
-			
+
 			return true;
 		}
+
 	}
 }
 

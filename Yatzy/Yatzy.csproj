@@ -94,6 +94,7 @@
     <Reference Include="ActionPack.iOS">
       <HintPath>..\Components\actionpack-1.4-trial\lib\ios\ActionPack.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\1.png">
@@ -115,10 +116,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\first.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\first%402x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\second.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\second%402x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -138,14 +153,21 @@
     <Compile Include="YatzyDomain\Common\Common.cs" />
     <Compile Include="YatzyDomain\Board\ScoreBoard.cs" />
     <Compile Include="YatzyDomain\Board\ActionBoardView.cs" />
+    <Compile Include="StartViewController.cs" />
+    <Compile Include="StartViewController.designer.cs">
+      <DependentUpon>StartViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomTextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="YatzyViewController.xib" />
+    <InterfaceDefinition Include="StartViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="YatzyDomain\" />
     <Folder Include="YatzyDomain\Board\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="actionpack-trial">

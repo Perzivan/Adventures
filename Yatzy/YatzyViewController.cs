@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using MonoTouch.Foundation;
 using System.Linq;
 using System;
+using System.Threading.Tasks;
+using Appracatappra.ActionComponents.ActionAlert;
+using MonoTouch.CoreAnimation;
 
 
 namespace Yatzy
@@ -15,9 +18,13 @@ namespace Yatzy
 		ActionBoardView YatzyTable;
 		private int YatzyTurn { get; set;}
 		private const int MaxTurns = 3;
+		private string PlayerName { get; set;}
 
-		public YatzyViewController () : base ("YatzyViewController", null)
+		public YatzyViewController (string playerName) : base ("YatzyViewController", null)
 		{
+			PlayerName = PlayerName;
+			Title = NSBundle.MainBundle.LocalizedString (playerName, playerName);
+			TabBarItem.Image = UIImage.FromBundle ("first");
 		}
 
 		public override void TouchesEnded (NSSet touches, UIEvent evt)
@@ -47,8 +54,13 @@ namespace Yatzy
 				View.Layer.AddSublayer (die);
 			}
 
+			//Disable all tabs except the first
+			for (int i = 0; i < TabBarController.ViewControllers.Length; i++) {
+				TabBarController.ViewControllers [i].TabBarItem.Enabled = i == 0;
+			}
+
 			List<string> players = new List<string> ();
-			players.Add ("Maria");
+			players.Add ("Player");
 
 			YatzyTable = new ActionBoardView (players);
 			View.AddSubview (YatzyTable.ComponentTable.TableView);
@@ -65,9 +77,9 @@ namespace Yatzy
 
 			YatzyTable.ComponentTable.ItemsSelected += delegate(UIActionTableItem item)
 			{
-				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), AddUnderScores(item.text));
+				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), Common.AddUnderScores(item.text));
 
-				if(!IsSelectable()) 
+				if(!CanSelect()) 
 				{
 					return;
 				}
@@ -87,7 +99,12 @@ namespace Yatzy
 						YatzyTable.Board.SetBonus(playerName);
 					}
 
-					YatzyTable.ComponentTable.LoadData();	
+					YatzyTable.ComponentTable.LoadData();
+
+					if(!CanSelect()) {
+						//Switch Player and disable all players other than the one that is currently playing.
+						ChangePlayerDirty(playerName);
+					}
 				}
 			};
 
@@ -95,7 +112,43 @@ namespace Yatzy
 			SetPresentRollNumber ();
 		}
 
-		private bool IsSelectable() {
+		private void ChangePlayerDirty(string playerName) {
+			RectangleF startFrame = RollButton.Frame;
+			//A superdirty way to win some time before the change of players 
+			//so that the player has a chance to see the score. 
+			UIView.Animate (0.5, 0.2, UIViewAnimationOptions.TransitionNone, ()=>{
+				RollButton.Hidden = true;
+				ReplacementButton.Hidden = false;
+				RollButton.Frame = new RectangleF(startFrame.X-50,startFrame.Y-50,startFrame.Width,startFrame.Height);
+			}, () =>{ 
+				RollButton.Frame = startFrame;
+				ReplacementButton.Hidden = true;
+				RollButton.Hidden = false;
+				MoveToNext(playerName);
+			});	
+
+				
+		}
+
+		private void MoveToNext(string playerName) {
+			UIViewController selected = TabBarController.SelectedViewController;
+
+			if (YatzyTable.Board.HasRoundsLeft (playerName)) {
+				selected.TabBarItem.Enabled = false;
+			} else {
+				selected.TabBarItem.Enabled = true;
+			}
+
+			//select the next controller. 
+			if (TabBarController.SelectedIndex < TabBarController.ViewControllers.Count () - 1) {
+				TabBarController.SelectedIndex += 1;
+			} else {
+				TabBarController.SelectedIndex = 0;
+			}
+			TabBarController.SelectedViewController.TabBarItem.Enabled = true;	
+		}
+
+		private bool CanSelect() {
 			return YatzyTurn > 0;	
 		}
 
@@ -116,7 +169,7 @@ namespace Yatzy
 		private void SetPresentRollNumber() {
 			if (YatzyTurn == 0) {
 				PresentRollNumber.Text = string.Empty;
-			} else if(YatzyTurn <= 3) {
+			} else if(YatzyTurn <= MaxTurns) {
 				PresentRollNumber.Text = YatzyTurn.ToString ();
 			}
 		}
@@ -140,17 +193,13 @@ namespace Yatzy
 			HideDies ();
 		}
 
-		private string AddUnderScores(string text) {
-			return text.Replace (" ", "_");
-		}
-
 		//Todo: Maybe I should put this somewhere else. 
 		private void CreateYatzyDies() {
-			DiceViewList.Add(new DieView (MakeRectangle(40,430)));
-			DiceViewList.Add(new DieView (MakeRectangle(100,430)));
-			DiceViewList.Add(new DieView (MakeRectangle(160,430)));
-			DiceViewList.Add(new DieView (MakeRectangle(220,430)));
-			DiceViewList.Add(new DieView (MakeRectangle(280,430)));
+			DiceViewList.Add(new DieView (MakeRectangle(40,400)));
+			DiceViewList.Add(new DieView (MakeRectangle(100,400)));
+			DiceViewList.Add(new DieView (MakeRectangle(160,400)));
+			DiceViewList.Add(new DieView (MakeRectangle(220,400)));
+			DiceViewList.Add(new DieView (MakeRectangle(280,400)));
 			HideDies ();
 		}
 

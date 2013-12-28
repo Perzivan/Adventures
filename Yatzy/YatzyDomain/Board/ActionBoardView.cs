@@ -16,7 +16,7 @@ namespace Yatzy
 		public ActionBoardView (List<string> players)
 		{
 			Board = new ScoreBoard (players);
-			ComponentTable = new UIActionTableViewController (UITableViewStyle.Grouped,new RectangleF (0, 20, 318, 310));
+			ComponentTable = new UIActionTableViewController (UITableViewStyle.Grouped,new RectangleF (0, 20, 318, 305));
 
 			ComponentTable.dataSource.RequestData += PopulateData;
 
@@ -25,13 +25,13 @@ namespace Yatzy
 
 		void PopulateData (UIActionTableViewDataSource dataSource)
 		{
-			UIActionTableSection section = new UIActionTableSection ("Yatzy " + Board.CurrentPlayer.Name);
+			UIActionTableSection section = new UIActionTableSection ("Yatzy ");
 			string[] scoreNames = Enum.GetNames (typeof(Common.ScoreType));
 			for (int i = 0; i < scoreNames.Length; i++) {
 				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), scoreNames [i]);
 				int score = Board.GetDisplayScore (Board.CurrentPlayer.Name, type);
 				string scoreText = score.ToString ();
-				string scoreName = scoreNames [i].Replace ("_", " ");
+				string scoreName = Common.RemoveUnderScores(scoreNames [i]);
 				int rawScore = Board.GetRawScore (Board.CurrentPlayer.Name, type);
 				if (IsCheckMarkItem (rawScore, type)) {
 					scoreText = ((char)0x221A) + " " + scoreText;

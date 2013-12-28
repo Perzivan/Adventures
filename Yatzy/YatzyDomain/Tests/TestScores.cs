@@ -9,7 +9,6 @@ namespace Yatzy
 
 		public TestScores (string playerName)
 		{
-			List<string> players = SetupPlayer (playerName);
 		}
 
 		private List<string> SetupPlayer(string name) {

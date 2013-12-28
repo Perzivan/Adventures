@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YatzyViewController">
             <connections>
                 <outlet property="PresentRollNumber" destination="K88-xn-9QJ" id="0s8-NC-DJG"/>
+                <outlet property="ReplacementButton" destination="ZcV-nA-mca" id="byU-2A-OWy"/>
                 <outlet property="RollButton" destination="K33-7U-lhN" id="L1U-si-sv9"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
@@ -17,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="K33-7U-lhN">
-                    <rect key="frame" x="15" y="357" width="272" height="30"/>
+                    <rect key="frame" x="15" y="333" width="281" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.49309984087191622" green="0.669921875" blue="0.65787130781558512" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="titleShadowOffset" width="1" height="1"/>
@@ -26,8 +27,18 @@
                         <color key="titleShadowColor" red="0.62603635204081631" green="0.61673325795111611" blue="0.61909626059853096" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZcV-nA-mca">
+                    <rect key="frame" x="15" y="333" width="281" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.49309984089999997" green="0.669921875" blue="0.65787130780000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="titleShadowOffset" width="1" height="1"/>
+                    <state key="normal" title="Press to roll!">
+                        <color key="titleColor" red="1" green="0.98513969030000004" blue="0.98891423570000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" red="0.62603635199999996" green="0.61673325800000001" blue="0.6190962606" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K88-xn-9QJ">
-                    <rect key="frame" x="295" y="361" width="25" height="21"/>
+                    <rect key="frame" x="298" y="333" width="25" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
