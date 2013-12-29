@@ -148,22 +148,22 @@ namespace AwesomeYatzy
 				RollButton.Frame = startFrame;
 				ReplacementButton.Hidden = true;
 				RollButton.Hidden = false;
-				MoveToNext(playerName);
+				MoveToNextPlayer(playerName);
 			});	
 
 				
 		}
 
-		private void MoveToNext(string playerName) {
-			UIViewController selected = TabBarController.SelectedViewController;
-			selected.TabBarItem.Enabled = !YatzyTable.Board.HasRoundsLeft (playerName);
+		private void MoveToNextPlayer(string playerName) {
 
 			if (TabBarController.SelectedIndex == TabBarController.ViewControllers.Count ()-1) {
 				TabBarController.SelectedIndex = 0;
 			} else {
 				TabBarController.SelectedIndex = TabBarController.SelectedIndex + 1;
 			}
-			DisableAllExcept (TabBarController.SelectedIndex);
+			if (YatzyTable.Board.HasRoundsLeft (playerName)) {
+				DisableAllExcept (TabBarController.SelectedIndex);
+			}
 		}
 
 		private void DisableAllExcept(int enabledPosition) {
