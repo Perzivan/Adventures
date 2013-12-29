@@ -96,8 +96,11 @@ namespace Yatzy
 
 		private void PlayerWasAdded(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty (NameEntryElement.Text)) {
-				YatzyViewController viewController = new YatzyViewController (NameEntryElement.Text);
+			const string helpText = "Enter a name";
+			string nameText = NameEntryElement.Text;
+
+			if (!string.IsNullOrEmpty (nameText) && nameText != helpText) {
+				YatzyViewController viewController = new YatzyViewController (nameText);
 
 				AddViewControllerToTabBar (viewController);
 				SetupStartGameButton ();
@@ -109,7 +112,7 @@ namespace Yatzy
 				}
 			}
 
-			NameEntryElement.Text = "Enter a name";
+			NameEntryElement.Text = helpText;
 			NameEntryElement.EndEditing (true);
 		}
 
