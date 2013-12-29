@@ -132,6 +132,7 @@ namespace AwesomeYatzy
 			var list = from view in new List<UIViewController> (TabBarController.ViewControllers)
 				where view != this select view;
 			TabBarController.ViewControllers = list.ToArray ();
+
 		}
 
 		private void SetupGameButton(out UIButton button,RectangleF rectangle, string text, bool addToView) {

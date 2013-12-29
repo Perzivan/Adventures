@@ -156,20 +156,20 @@ namespace AwesomeYatzy
 
 		private void MoveToNext(string playerName) {
 			UIViewController selected = TabBarController.SelectedViewController;
+			selected.TabBarItem.Enabled = !YatzyTable.Board.HasRoundsLeft (playerName);
 
-			if (YatzyTable.Board.HasRoundsLeft (playerName)) {
-				selected.TabBarItem.Enabled = false;
-			} else {
-				selected.TabBarItem.Enabled = true;
-			}
-
-			//select the next controller. 
-			if (TabBarController.SelectedIndex < TabBarController.ViewControllers.Count () - 1) {
-				TabBarController.SelectedIndex += 1;
-			} else {
+			if (TabBarController.SelectedIndex == TabBarController.ViewControllers.Count ()-1) {
 				TabBarController.SelectedIndex = 0;
+			} else {
+				TabBarController.SelectedIndex = TabBarController.SelectedIndex + 1;
 			}
-			TabBarController.SelectedViewController.TabBarItem.Enabled = true;	
+			DisableAllExcept (TabBarController.SelectedIndex);
+		}
+
+		private void DisableAllExcept(int enabledPosition) {
+			for (int i = 0; i < TabBarController.ViewControllers.Count(); i++) {
+				TabBarController.ViewControllers [i].TabBarItem.Enabled = i == enabledPosition;
+			}
 		}
 
 		private bool CanSelect() {
