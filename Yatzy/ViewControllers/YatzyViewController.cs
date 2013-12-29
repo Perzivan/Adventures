@@ -155,15 +155,26 @@ namespace AwesomeYatzy
 		}
 
 		private void MoveToNextPlayer(string playerName) {
-
+			//Is this the last controller?
 			if (TabBarController.SelectedIndex == TabBarController.ViewControllers.Count ()-1) {
 				TabBarController.SelectedIndex = 0;
+				//if the first player has no rounds left. Enable all. 
+				if (!YatzyTable.Board.HasRoundsLeft (playerName)) {
+					EnableAll ();
+					return;
+				}
 			} else {
+				//Else move to the next. 
 				TabBarController.SelectedIndex = TabBarController.SelectedIndex + 1;
 			}
-			if (YatzyTable.Board.HasRoundsLeft (playerName)) {
-				DisableAllExcept (TabBarController.SelectedIndex);
-			}
+			DisableAllExcept (TabBarController.SelectedIndex);
+
+		}
+
+		private void EnableAll() {
+			for (int i = 0; i < TabBarController.ViewControllers.Count(); i++) {
+				TabBarController.ViewControllers [i].TabBarItem.Enabled = true;
+			}		
 		}
 
 		private void DisableAllExcept(int enabledPosition) {
