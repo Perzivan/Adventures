@@ -6,7 +6,7 @@
 //
 using MonoTouch.Foundation;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	[Register ("StartViewController")]
 	partial class StartViewController

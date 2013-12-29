@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class ActionBoardView : UIView
 	{
@@ -25,7 +25,7 @@ namespace Yatzy
 
 		void PopulateData (UIActionTableViewDataSource dataSource)
 		{
-			UIActionTableSection section = new UIActionTableSection ("Yatzy ");
+			UIActionTableSection section = new UIActionTableSection ("Yatzy");
 			string[] scoreNames = Enum.GetNames (typeof(Common.ScoreType));
 			for (int i = 0; i < scoreNames.Length; i++) {
 				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), scoreNames [i]);

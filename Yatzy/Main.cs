@@ -4,7 +4,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class Application
 	{

@@ -10,7 +10,7 @@ using Appracatappra.ActionComponents.ActionAlert;
 using MonoTouch.CoreAnimation;
 
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public partial class YatzyViewController : UIViewController
 	{

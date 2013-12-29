@@ -1,4 +1,4 @@
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public interface Die
 	{

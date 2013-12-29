@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class DieImpl : Die
 	{

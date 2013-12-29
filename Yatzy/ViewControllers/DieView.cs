@@ -2,7 +2,7 @@ using MonoTouch.CoreAnimation;
 using MonoTouch.UIKit;
 using System.Drawing;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class DieView : CALayer {
 

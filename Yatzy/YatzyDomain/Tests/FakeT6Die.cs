@@ -1,6 +1,6 @@
 using System;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class FakeT6Die : Die
 	{

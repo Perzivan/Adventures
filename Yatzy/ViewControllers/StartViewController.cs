@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public partial class StartViewController : UIViewController
 	{

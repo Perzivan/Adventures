@@ -7,7 +7,7 @@
 using MonoTouch.Foundation;
 using System.CodeDom.Compiler;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	[Register ("YatzyViewController")]
 	partial class YatzyViewController

@@ -1,6 +1,6 @@
 using System;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public static class DieFactory {
 		public static FakeT6Die CreateFakeDie(int value) {

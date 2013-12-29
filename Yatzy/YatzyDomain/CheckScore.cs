@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class CheckScore
 	{
@@ -140,7 +140,7 @@ namespace Yatzy
 		//Bleh.. Refactor this! 
 		public int SumScoreForType(List<Die> dies,Common.ScoreType scoreType) {
 
-			CheckScore Check = new Yatzy.CheckScore ();
+			CheckScore Check = new CheckScore ();
 
 			switch (scoreType) {
 			case Common.ScoreType.Ones:

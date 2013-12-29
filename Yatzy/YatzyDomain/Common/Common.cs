@@ -2,7 +2,7 @@ using System;
 using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
 
-namespace Yatzy
+namespace AwesomeYatzy
 {
 	public class Common
 	{
