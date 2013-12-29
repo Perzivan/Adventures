@@ -24,7 +24,15 @@ namespace AwesomeYatzy
 		{
 			PlayerName = PlayerName;
 			Title = NSBundle.MainBundle.LocalizedString (playerName, playerName);
-			TabBarItem.Image = UIImage.FromBundle ("first");
+			UIImage image =  UIImage.FromBundle ("TabItemImage");
+			TabBarItem.SetFinishedImages(image,image);
+			TabBarItem.Image = image;
+			TabBarItem.SelectedImage = image;
+
+
+			UITextAttributes attributes = new UITextAttributes ();
+			attributes.TextColor = UIColor.Brown;
+			TabBarItem.SetTitleTextAttributes (attributes,UIControlState.Normal);
 		}
 
 		public override void TouchesEnded (NSSet touches, UIEvent evt)
@@ -78,7 +86,7 @@ namespace AwesomeYatzy
 				PrepareRoll ();
 
 				if (YatzyTurn == MaxTurns) {
-					RollButton.SetTitle ("Select score category!", UIControlState.Normal);
+					RollButton.SetTitle ("Select a score category!", UIControlState.Normal);
 				}
 
 				DiceViewList.ForEach (DoRoll);
@@ -92,6 +100,7 @@ namespace AwesomeYatzy
 			SetupControllers ();
 			ResetForNextTurn ();
 			SetPresentRollNumber ();
+			//View.BackgroundColor = Common.GetYatzyBackgroundUIColor ();
 		}
 
 		private void SetupControllers () {

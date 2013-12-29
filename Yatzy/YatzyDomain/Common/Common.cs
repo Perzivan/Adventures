@@ -36,12 +36,11 @@ namespace AwesomeYatzy
 		}
 
 		public static UIColor GetYatzyButtonUIColor() {
-			const float red = 0.4930998f;
-			const float green = 0.6699219f;
-			const float blue = 0.6578713f;
-			const float alpha = 1;
-			CGColor color = new CGColor(red,green,blue,alpha);
-			return UIColor.FromCGColor(color);
+			return UIColor.FromRGBA (125, 170, 167, 255); 
+		}
+
+		public static UIColor GetAlternateYatzyBackgroundUIColor() {
+			return UIColor.FromPatternImage(UIImage.FromBundle ("TabItemImage"));
 		}
 
 		public static UIColor GetYatzyBackgroundUIColor() {

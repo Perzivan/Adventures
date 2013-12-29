@@ -79,7 +79,9 @@ namespace AwesomeYatzy
 			UIButton startGame;
 			SetupGameButton (out startGame, new RectangleF (115, 203, 100, 30), "Start Game", true);
 			StartGame = startGame;
-			StartGame.TouchUpInside += (object sender, EventArgs e) => HideStartControls ();	
+			StartGame.TouchUpInside += (object sender, EventArgs e) =>{ 
+				HideStartControls ();
+			};
 		}
 
 		private void AddViewControllerToTabBar(UIViewController viewController) {
@@ -91,6 +93,9 @@ namespace AwesomeYatzy
 				controllerList = new List<UIViewController> ();
 			}
 			controllerList.Add (viewController);
+
+			controllerList.ForEach(controller=>controller.TabBarItem.Enabled = false);
+
 			TabBarController.ViewControllers = controllerList.ToArray ();
 		}
 
@@ -101,7 +106,6 @@ namespace AwesomeYatzy
 
 			if (!string.IsNullOrEmpty (nameText) && nameText != helpText) {
 				YatzyViewController viewController = new YatzyViewController (nameText);
-
 				AddViewControllerToTabBar (viewController);
 				SetupStartGameButton ();
 				SetupResetButton ();

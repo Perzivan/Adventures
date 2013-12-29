@@ -45,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.93382727581521741" green="0.87642431513381325" blue="0.63228249965736316" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.9338727678571429" green="0.78619823404494604" blue="0.43076141420747971" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.70027201860599253" green="0.79591836734693877" blue="0.6795884128973716" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
