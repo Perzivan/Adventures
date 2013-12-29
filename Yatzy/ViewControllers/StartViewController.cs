@@ -11,6 +11,7 @@ namespace Yatzy
 		private UIButton AddPlayers { get;set;}
 		private UIButton AddPlayer { get;set;}
 		private UIButton StartGame { get;set;}
+		private UIButton Reset { get;set;}
 		private CustomTextView NameEntryElement {get;set;}
 
 		public override void ViewDidLoad ()
@@ -29,35 +30,54 @@ namespace Yatzy
 		private void AddGameControls() {
 			SetupAddPlayersButton ();
 			NameEntryElement = new CustomTextView (new RectangleF (55, 150, 100, 30));
+			NameEntryElement.Text = "Enter a name";
+
+			NameEntryElement.Started += (object sender, EventArgs e) => NameEntryElement.Text = "";
+
 			NameEntryElement.BackgroundColor = Common.GetYatzyBackgroundUIColor ();
 			SetUpAddPlayerButton ();
 		}
 
 		private void SetupAddPlayersButton() {
 			UIButton addPlayers;
-			SetupGameButton (out addPlayers, new RectangleF (115, 203, 100, 30),"Add Players!",true);
+			SetupGameButton (out addPlayers, new RectangleF (115, 203, 100, 30),"Add Players",true);
 			AddPlayers = addPlayers;
 
 			AddPlayers.TouchUpInside += delegate (object sender, EventArgs e) {
 				Add (NameEntryElement);
 				Add (AddPlayer);
+				AddPlayers.Hidden = true;
+			};
+		}
+
+		private void SetupResetButton() {
+			UIButton reset;
+			SetupGameButton (out reset, new RectangleF (115, 243, 100, 30),"Reset",true);
+			Reset = reset;
+			Reset.TouchUpInside += (object sender, EventArgs e) => {
+				TabBarController.ViewControllers = new UIViewController[] {
+					this
+				};
+				StartGame.Hidden = true;
+				Reset.Hidden = true;
 			};
 		}
 
 		private void SetUpAddPlayerButton() {
 
 			UIButton addPlayer;
-			SetupGameButton (out addPlayer, new RectangleF (165, 150, 50, 30),"Add!",false);
+			SetupGameButton (out addPlayer, new RectangleF (165, 150, 50, 30),"Add",false);
 			AddPlayer = addPlayer;
 			AddPlayer.TouchUpInside += PlayerWasAdded;
 		}
 
 		private void SetupStartGameButton() {
 			if (StartGame != null) {
+				StartGame.Hidden = false;
 				return;
 			} 
 			UIButton startGame;
-			SetupGameButton (out startGame, new RectangleF (115, 240, 100, 30), "Start Game!", true);
+			SetupGameButton (out startGame, new RectangleF (115, 203, 100, 30), "Start Game", true);
 			StartGame = startGame;
 			StartGame.TouchUpInside += (object sender, EventArgs e) => HideStartControls ();	
 		}
@@ -81,6 +101,7 @@ namespace Yatzy
 
 				AddViewControllerToTabBar (viewController);
 				SetupStartGameButton ();
+				SetupResetButton ();
 
 				const int maxNumberOfPlayers = 5;
 				if (TabBarController.ViewControllers.Length >= maxNumberOfPlayers) {
@@ -88,7 +109,7 @@ namespace Yatzy
 				}
 			}
 
-			NameEntryElement.Text = string.Empty;
+			NameEntryElement.Text = "Enter a name";
 			NameEntryElement.EndEditing (true);
 		}
 

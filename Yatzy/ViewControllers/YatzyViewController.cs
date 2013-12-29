@@ -44,10 +44,57 @@ namespace Yatzy
 			}
 		}
 
+		void TableItemSelected (UIActionTableItem item)
+		{
+			Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), Common.AddUnderScores (item.text));
+			if (!CanSelect ()) {
+				return;
+			}
+			CheckScore check = new CheckScore ();
+			List<Die> diceList = new List<Die> ();
+			DiceViewList.ForEach (dieView => diceList.Add (dieView.Die));
+			int sum = check.SumScoreForType (diceList, type);
+			string playerName = YatzyTable.Board.CurrentPlayer.Name;
+			if (YatzyTable.Board.IsUnpopulated (playerName, type)) {
+				PopulateValue (playerName, type, sum);
+				YatzyTable.Board.SetSum (playerName);
+				if (YatzyTable.Board.HasBonus (playerName)) {
+					YatzyTable.Board.SetBonus (playerName);
+				}
+				YatzyTable.ComponentTable.LoadData ();
+
+				RollButton.SetTitle ("Press to roll!", UIControlState.Normal);
+
+				if (!CanSelect ()) {
+					//Switch Player and disable all players other than the one that is currently playing.
+					ChangePlayerDirty (playerName);
+				}
+			}
+		}
+		void RollTheDice (object sender, EventArgs e)
+		{
+			string playerName = YatzyTable.Board.CurrentPlayer.Name;
+			if (YatzyTable.Board.HasRoundsLeft (playerName)) {
+				PrepareRoll ();
+
+				if (YatzyTurn == MaxTurns) {
+					RollButton.SetTitle ("Select score category!", UIControlState.Normal);
+				}
+
+				DiceViewList.ForEach (DoRoll);
+				SetPresentRollNumber ();
+			}
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
+			SetupControllers ();
+			ResetForNextTurn ();
+			SetPresentRollNumber ();
+		}
+
+		private void SetupControllers () {
 			CreateYatzyDies ();
 
 			foreach(DieView die in DiceViewList) {
@@ -65,51 +112,19 @@ namespace Yatzy
 			YatzyTable = new ActionBoardView (players);
 			View.AddSubview (YatzyTable.ComponentTable.TableView);
 
-			RollButton.TouchUpInside += (sender, e) => {
-				string playerName = YatzyTable.Board.CurrentPlayer.Name;
+			AdjustToScreenSize (RollButton);
+			AdjustToScreenSize (ReplacementButton);
+			AdjustToScreenSize (PresentRollNumber);
 
-				if(YatzyTable.Board.HasRoundsLeft(playerName)) {
-					PrepareRoll();
-					DiceViewList.ForEach (DoRoll);
-					SetPresentRollNumber();
-				}
-			};
+			RollButton.TouchUpInside += RollTheDice;
 
-			YatzyTable.ComponentTable.ItemsSelected += delegate(UIActionTableItem item)
-			{
-				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), Common.AddUnderScores(item.text));
+			YatzyTable.ComponentTable.ItemsSelected += TableItemSelected;		
+		}
 
-				if(!CanSelect()) 
-				{
-					return;
-				}
-
-				CheckScore check = new CheckScore ();
-				List<Die> diceList = new List<Die> ();
-				DiceViewList.ForEach (dieView => diceList.Add (dieView.Die));
-				int sum = check.SumScoreForType (diceList,type);
-
-				string playerName = YatzyTable.Board.CurrentPlayer.Name;
-
-				if(YatzyTable.Board.IsUnpopulated(playerName,type)) {
-					PopulateValue(playerName,type,sum);
-					YatzyTable.Board.SetSum(playerName);
-	
-					if(YatzyTable.Board.HasBonus(playerName)) {
-						YatzyTable.Board.SetBonus(playerName);
-					}
-
-					YatzyTable.ComponentTable.LoadData();
-
-					if(!CanSelect()) {
-						//Switch Player and disable all players other than the one that is currently playing.
-						ChangePlayerDirty(playerName);
-					}
-				}
-			};
-
-			ResetForNextTurn ();
-			SetPresentRollNumber ();
+		private void AdjustToScreenSize(UIView view) {
+			RectangleF rectangle =view.Frame;
+			rectangle.Y = UIScreen.MainScreen.ApplicationFrame.Height- 124;
+			view.Frame = rectangle;		
 		}
 
 		private void ChangePlayerDirty(string playerName) {
@@ -177,14 +192,14 @@ namespace Yatzy
 		private void DoRoll(DieView die) {
 			if (YatzyTurn <= MaxTurns) {
 				die.Roll ();
-			} 	
+			} 
 		}
 
 		private void PrepareRoll() {
 			if (YatzyTurn <= MaxTurns) {
 				YatzyTurn = YatzyTurn + 1;
 				ShowDies ();
-			} 
+			}
 		}
 
 		private void ResetForNextTurn() {
@@ -195,11 +210,14 @@ namespace Yatzy
 
 		//Todo: Maybe I should put this somewhere else. 
 		private void CreateYatzyDies() {
-			DiceViewList.Add(new DieView (MakeRectangle(40,400)));
-			DiceViewList.Add(new DieView (MakeRectangle(100,400)));
-			DiceViewList.Add(new DieView (MakeRectangle(160,400)));
-			DiceViewList.Add(new DieView (MakeRectangle(220,400)));
-			DiceViewList.Add(new DieView (MakeRectangle(280,400)));
+
+			int y = Convert.ToInt32(UIScreen.MainScreen.Bounds.Height - 80);
+
+			DiceViewList.Add(new DieView (MakeRectangle(40,y)));
+			DiceViewList.Add(new DieView (MakeRectangle(100,y)));
+			DiceViewList.Add(new DieView (MakeRectangle(160,y)));
+			DiceViewList.Add(new DieView (MakeRectangle(220,y)));
+			DiceViewList.Add(new DieView (MakeRectangle(280,y)));
 			HideDies ();
 		}
 
