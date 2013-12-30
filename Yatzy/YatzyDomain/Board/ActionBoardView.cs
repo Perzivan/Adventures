@@ -2,7 +2,6 @@ using Appracatappra.ActionComponents.ActionTable;
 using System.Drawing;
 using MonoTouch.UIKit;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System;
 
 namespace AwesomeYatzy
@@ -12,11 +11,10 @@ namespace AwesomeYatzy
 
 		public UIActionTableViewController ComponentTable { get; private set;}
 		public ScoreBoard Board { get; private set;}
-
 		public ActionBoardView (List<string> players)
 		{
 			Board = new ScoreBoard (players);
-			ComponentTable = new UIActionTableViewController (UITableViewStyle.Grouped,new RectangleF (0, 20, 318, 305));
+			ComponentTable = new UIActionTableViewController (UITableViewStyle.Grouped,new RectangleF (2, 20, 316, 310));
 
 			ComponentTable.dataSource.RequestData += PopulateData;
 
@@ -25,7 +23,8 @@ namespace AwesomeYatzy
 
 		void PopulateData (UIActionTableViewDataSource dataSource)
 		{
-			UIActionTableSection section = new UIActionTableSection ("Yatzy");
+			//Uggly don't do this. 
+			UIActionTableSection section = new UIActionTableSection ("Yatzy - " + Board.CurrentPlayer.Name);
 			string[] scoreNames = Enum.GetNames (typeof(Common.ScoreType));
 			for (int i = 0; i < scoreNames.Length; i++) {
 				Common.ScoreType type = (Common.ScoreType)Enum.Parse (typeof(Common.ScoreType), scoreNames [i]);

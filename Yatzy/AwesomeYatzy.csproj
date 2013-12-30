@@ -159,6 +159,7 @@
       <DependentUpon>YatzyViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\DieView.cs" />
+    <Compile Include="ViewControllers\YatzyComponents.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="ViewControllers\StartViewController.xib" />
