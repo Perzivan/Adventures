@@ -88,7 +88,6 @@ namespace AwesomeYatzy
 				}
 
 				Components.DiceViewList.ForEach (DoRoll);
-				SetPresentRollNumber ();
 			}
 		}
 		public override void ViewDidLoad ()
@@ -97,8 +96,6 @@ namespace AwesomeYatzy
 			// Perform any additional setup after loading the view, typically from a nib.
 			SetupControllers ();
 			ResetForNextTurn ();
-			SetPresentRollNumber ();
-			//View.BackgroundColor = Common.GetYatzyBackgroundUIColor ();
 		}
 
 		private void SetupControllers () {
@@ -117,8 +114,6 @@ namespace AwesomeYatzy
 
 			AdjustToScreenSize (RollButton);
 			AdjustToScreenSize (ReplacementButton);
-			AdjustToScreenSize (PresentRollNumber);
-
 			RollButton.TouchUpInside += RollTheDice;
 
 			Components.YatzyTable.ComponentTable.ItemsSelected += TableItemSelected;		
@@ -184,7 +179,6 @@ namespace AwesomeYatzy
 		private void PopulateValue(string playerName, Common.ScoreType type, int sum) {
 			Components.YatzyTable.Board.SetScore(playerName,sum,type);
 			ResetForNextTurn();
-			SetPresentRollNumber ();
 		}
 
 		private void HideDies() {
@@ -193,14 +187,6 @@ namespace AwesomeYatzy
 
 		private void ShowDies() {
 			Components.DiceViewList.ForEach(dice=>dice.Hidden = false);
-		}
-
-		private void SetPresentRollNumber() {
-			if (Components.YatzyTurn == 0) {
-				PresentRollNumber.Text = string.Empty;
-			} else if(Components.YatzyTurn <= Components.GetMaxTurns()) {
-				PresentRollNumber.Text = Components.YatzyTurn.ToString ();
-			}
 		}
 
 		private void DoRoll(DieView die) {
@@ -212,6 +198,12 @@ namespace AwesomeYatzy
 		private void PrepareRoll() {
 			if (Components.YatzyTurn <= Components.GetMaxTurns()) {
 				Components.YatzyTurn = Components.YatzyTurn + 1;
+
+				if (Components.YatzyTurn < Components.GetMaxTurns ()) {
+					string title = "Press to roll! (" + Components.YatzyTurn + " out of " + Components.GetMaxTurns () + ")";
+					RollButton.SetTitle (title, UIControlState.Normal);
+				}
+
 				ShowDies ();
 			}
 		}

@@ -13,9 +13,6 @@ namespace AwesomeYatzy
 	partial class YatzyViewController
 	{
 		[Outlet]
-		MonoTouch.UIKit.UILabel PresentRollNumber { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIButton ReplacementButton { get; set; }
 
 		[Outlet]
@@ -26,11 +23,6 @@ namespace AwesomeYatzy
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (PresentRollNumber != null) {
-				PresentRollNumber.Dispose ();
-				PresentRollNumber = null;
-			}
-
 			if (ReplacementButton != null) {
 				ReplacementButton.Dispose ();
 				ReplacementButton = null;

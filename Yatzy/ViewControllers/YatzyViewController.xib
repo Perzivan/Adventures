@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YatzyViewController">
             <connections>
-                <outlet property="PresentRollNumber" destination="K88-xn-9QJ" id="0s8-NC-DJG"/>
                 <outlet property="ReplacementButton" destination="ZcV-nA-mca" id="byU-2A-OWy"/>
                 <outlet property="RollButton" destination="K33-7U-lhN" id="L1U-si-sv9"/>
                 <outlet property="view" destination="6" id="7"/>
@@ -18,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="K33-7U-lhN">
-                    <rect key="frame" x="15" y="333" width="281" height="30"/>
+                    <rect key="frame" x="15" y="333" width="290" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.49309984087191622" green="0.669921875" blue="0.65787130781558512" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="titleShadowOffset" width="1" height="1"/>
@@ -28,7 +27,7 @@
                     </state>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZcV-nA-mca">
-                    <rect key="frame" x="15" y="333" width="281" height="30"/>
+                    <rect key="frame" x="15" y="333" width="290" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.49309984089999997" green="0.669921875" blue="0.65787130780000003" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="titleShadowOffset" width="1" height="1"/>
@@ -37,13 +36,6 @@
                         <color key="titleShadowColor" red="0.62603635199999996" green="0.61673325800000001" blue="0.6190962606" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K88-xn-9QJ">
-                    <rect key="frame" x="298" y="333" width="25" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.9338727678571429" green="0.78619823404494604" blue="0.43076141420747971" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.70027201860599253" green="0.79591836734693877" blue="0.6795884128973716" alpha="1" colorSpace="calibratedRGB"/>
