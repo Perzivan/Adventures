@@ -26,7 +26,7 @@
                         <color key="titleShadowColor" red="0.62603635204081631" green="0.61673325795111611" blue="0.61909626059853096" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZcV-nA-mca">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZcV-nA-mca">
                     <rect key="frame" x="15" y="333" width="290" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.49309984089999997" green="0.669921875" blue="0.65787130780000003" alpha="1" colorSpace="calibratedRGB"/>

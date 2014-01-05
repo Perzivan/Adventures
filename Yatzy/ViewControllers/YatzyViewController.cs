@@ -121,7 +121,7 @@ namespace AwesomeYatzy
 			RectangleF startFrame = RollButton.Frame;
 			//A superdirty way to win some time before the change of players 
 			//so that the player has a chance to see the score. 
-			UIView.Animate (0.5, 0.2, UIViewAnimationOptions.TransitionNone, ()=>{
+			UIView.Animate (0.3, 0, UIViewAnimationOptions.TransitionNone, ()=>{
 				RollButton.Hidden = true;
 				ReplacementButton.Hidden = false;
 				RollButton.Frame = new RectangleF(startFrame.X-50,startFrame.Y-50,startFrame.Width,startFrame.Height);
