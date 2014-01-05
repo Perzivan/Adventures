@@ -60,7 +60,7 @@ namespace AwesomeYatzy
 			string playerName = Components.YatzyTable.Board.CurrentPlayer.Name;
 
 			if (Components.YatzyTable.Board.IsUnpopulated (playerName, type)) {
-				PopulateValue (playerName, type, sum);
+				Components.PopulateValue (playerName, type, sum);
 				Components.YatzyTable.Board.SetSum (playerName);
 
 				if (Components.YatzyTable.Board.HasBonus (playerName)) {
@@ -95,12 +95,10 @@ namespace AwesomeYatzy
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
 			SetupControllers ();
-			ResetForNextTurn ();
+			Components.ResetForNextTurn ();
 		}
 
 		private void SetupControllers () {
-			CreateYatzyDies ();
-
 			foreach(DieView die in Components.DiceViewList) {
 				View.Layer.AddSublayer (die);
 			}
@@ -112,17 +110,11 @@ namespace AwesomeYatzy
 
 			View.AddSubview (Components.YatzyTable.ComponentTable.TableView);
 
-			AdjustToScreenSize (RollButton);
-			AdjustToScreenSize (ReplacementButton);
+			Components.AdjustToScreenSize (RollButton);
+			Components.AdjustToScreenSize (ReplacementButton);
 			RollButton.TouchUpInside += RollTheDice;
 
 			Components.YatzyTable.ComponentTable.ItemsSelected += TableItemSelected;		
-		}
-
-		private void AdjustToScreenSize(UIView view) {
-			RectangleF rectangle =view.Frame;
-			rectangle.Y = UIScreen.MainScreen.ApplicationFrame.Height- 124;
-			view.Frame = rectangle;		
 		}
 
 		private void ChangePlayerDirty(string playerName) {
@@ -176,19 +168,6 @@ namespace AwesomeYatzy
 			return Components.YatzyTurn > 0;	
 		}
 
-		private void PopulateValue(string playerName, Common.ScoreType type, int sum) {
-			Components.YatzyTable.Board.SetScore(playerName,sum,type);
-			ResetForNextTurn();
-		}
-
-		private void HideDies() {
-			Components.DiceViewList.ForEach(dice=>dice.Hidden = true);
-		}
-
-		private void ShowDies() {
-			Components.DiceViewList.ForEach(dice=>dice.Hidden = false);
-		}
-
 		private void DoRoll(DieView die) {
 			if (Components.YatzyTurn <= Components.GetMaxTurns()) {
 				die.Roll ();
@@ -204,33 +183,8 @@ namespace AwesomeYatzy
 					RollButton.SetTitle (title, UIControlState.Normal);
 				}
 
-				ShowDies ();
+				Components.ShowDies ();
 			}
-		}
-
-		private void ResetForNextTurn() {
-			Components.YatzyTurn = 0;
-			Components.DiceViewList.ForEach(dice=>dice.Unselect());
-			HideDies ();
-		}
-
-		//Todo: Maybe I should put this somewhere else. 
-		private void CreateYatzyDies() {
-
-			int y = Convert.ToInt32(UIScreen.MainScreen.Bounds.Height - 80);
-
-			Components.DiceViewList.Add(new DieView (MakeRectangle(40,y)));
-			Components.DiceViewList.Add(new DieView (MakeRectangle(100,y)));
-			Components.DiceViewList.Add(new DieView (MakeRectangle(160,y)));
-			Components.DiceViewList.Add(new DieView (MakeRectangle(220,y)));
-			Components.DiceViewList.Add(new DieView (MakeRectangle(280,y)));
-			HideDies ();
-		}
-
-		private RectangleF MakeRectangle(int x, int y) {
-			PointF location = new PointF (x, y);
-			SizeF size = new SizeF (50, 50);
-			return new RectangleF (location, size);		
 		}
 	}
 }
