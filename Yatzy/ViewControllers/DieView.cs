@@ -32,11 +32,13 @@ namespace AwesomeYatzy
 		public void MarkAsSelected() {
 			BorderColor = UIColor.Green.CGColor;
 			BorderWidth = 2;
+			CornerRadius = 5;
 			Enabled = false;
 		}
 
 		public void Unselect() {
 			BorderWidth = 0;
+			CornerRadius = 0;
 			Enabled = true;
 		}
 

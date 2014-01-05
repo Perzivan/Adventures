@@ -32,5 +32,7 @@
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Awesome Yatzy</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
